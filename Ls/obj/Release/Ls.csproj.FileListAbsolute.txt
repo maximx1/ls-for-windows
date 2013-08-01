@@ -1,0 +1,6 @@
+C:\Users\maxim_000\Documents\Development\csharp\Ls\Ls\bin\Release\Ls.exe.config
+C:\Users\maxim_000\Documents\Development\csharp\Ls\Ls\bin\Release\Ls.exe
+C:\Users\maxim_000\Documents\Development\csharp\Ls\Ls\bin\Release\Ls.pdb
+C:\Users\maxim_000\Documents\Development\csharp\Ls\Ls\obj\Release\Ls.exe
+C:\Users\maxim_000\Documents\Development\csharp\Ls\Ls\obj\Release\Ls.pdb
+C:\Users\maxim_000\Documents\Development\csharp\Ls\Ls\obj\Release\Ls.csprojResolveAssemblyReference.cache
