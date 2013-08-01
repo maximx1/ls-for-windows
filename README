@@ -1,0 +1,10 @@
+Ls implementation for windows.
+
+Just place executable into a directory and add it to the windows path.
+
+Currently supports: 
+**8/1/2013
+	ls
+	ls -l
+	ls -la
+	ls -a
