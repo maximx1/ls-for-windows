@@ -43,7 +43,7 @@ namespace Ls
         /// <returns>List of flags found behind "-" character.</returns>
         private static List<char> PullFlagsFromCommandLineArguments(List<string> argsList)
         {
-            IEnumerable<char[]> flagsList = argsList.Where(x => x.StartsWith("-")).Select(x => x.Substring(1).ToLower().ToCharArray());
+            IEnumerable<char[]> flagsList = argsList.Where(x => x.StartsWith("-")).Select(x => x.Substring(1).ToCharArray());
 
             List<char> fullFlagList = new List<char>();
             foreach (char[] listElement in flagsList)
