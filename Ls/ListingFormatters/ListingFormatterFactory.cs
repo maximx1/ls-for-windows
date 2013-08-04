@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ls.ListingItemControllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +14,14 @@ namespace Ls.ListingFormatters
         /// </summary>
         /// <param name="flags">command line flags.</param>
         /// <returns></returns>
-        public static IListingFormatter getLister(List<char> flags)
+        public static IListingFormatter getLister(List<char> flags, string targetDirectory)
         {
-            IListingFormatter lister = new RegularListingFormatter(flags.Contains('a'));
+            ListingItemControllerBase listingItemController = ListingItemControllerFactory.getItemController(flags, targetDirectory);
+            IListingFormatter lister = new RegularListingFormatter(listingItemController, targetDirectory);
 
             if (flags.Contains('l'))
             {
-                lister = new LongListingFormatter(flags.Contains('a'));
+                lister = new LongListingFormatter(listingItemController, targetDirectory);
             }
 
             return lister;

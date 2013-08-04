@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ls.ListingItemControllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,8 @@ namespace Ls.ListingFormatters
     class RegularListingFormatter : IListingFormatter
     {
         private int currentScreenWidth;
-        private bool listingHidden;
+        private ListingItemControllerBase listingItemController;
+        private string targetDirectory;
 
         /// <summary>
         /// Sets up the regular listing formatter.
@@ -19,9 +21,10 @@ namespace Ls.ListingFormatters
             currentScreenWidth = Console.WindowWidth;
         }
 
-        public RegularListingFormatter(bool listingHidden) : this()
+        public RegularListingFormatter(ListingItemControllerBase listingItemController, string targetDirectory) : this()
         {
-            this.listingHidden = listingHidden;
+            this.listingItemController = listingItemController;
+            this.targetDirectory = targetDirectory;
         }
 
         /// <summary>
@@ -65,13 +68,10 @@ namespace Ls.ListingFormatters
         /// </summary>
         /// <param name="directories"></param>
         /// <param name="files"></param>
-        public void PrintListings(IEnumerable<string> directories, IEnumerable<string> files)
+        public void PrintListings()
         {
-            if (!listingHidden)
-            {
-                directories = directories.Where(x => !x.StartsWith("."));
-                files = files.Where(x => !x.StartsWith("."));
-            }
+            IEnumerable<string> directories = listingItemController.GetDirectories();
+            IEnumerable<string> files = listingItemController.GetFiles();
 
             string formattedListing = GenerateListing(directories);
             ConsoleColor originalForegroundColor = Console.ForegroundColor;
@@ -89,7 +89,11 @@ namespace Ls.ListingFormatters
             if (formattedListing.Length > 0)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("\n\n--Files--");
+                if (directories.Any())
+                {
+                    Console.WriteLine();
+                }
+                Console.WriteLine("--Files--");
 
                 Console.ForegroundColor = originalForegroundColor;
                 Console.Write(formattedListing);

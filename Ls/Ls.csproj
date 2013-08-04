@@ -44,6 +44,11 @@
     <Compile Include="ListingFormatters\IListingFormatter.cs" />
     <Compile Include="ListingFormatters\ListingFormatterFactory.cs" />
     <Compile Include="ListingFormatters\LongListingFormatter.cs" />
+    <Compile Include="ListingItemControllers\AllListingItemController.cs" />
+    <Compile Include="ListingItemControllers\AlmostAllListingItemController.cs" />
+    <Compile Include="ListingItemControllers\ListingItemControllerBase.cs" />
+    <Compile Include="ListingItemControllers\ListingItemControllerFactory.cs" />
+    <Compile Include="ListingItemControllers\RegularItemController.cs" />
     <Compile Include="LsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ListingFormatters\RegularListingFormatter.cs" />

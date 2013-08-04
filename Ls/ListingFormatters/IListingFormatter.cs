@@ -15,8 +15,6 @@ namespace Ls
         /// <summary>
         /// Prints the listings of files and directories in the specified format.
         /// </summary>
-        /// <param name="directories">List of directories.</param>
-        /// <param name="files">List of files.</param>
-        void PrintListings(IEnumerable<string> directories, IEnumerable<string> files);
+        void PrintListings();
     }
 }

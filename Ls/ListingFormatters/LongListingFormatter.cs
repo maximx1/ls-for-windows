@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ls.ListingItemControllers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,11 +10,13 @@ namespace Ls.ListingFormatters
 {
     class LongListingFormatter : IListingFormatter
     {
-        private bool listingHidden;
+        private ListingItemControllerBase listingItemController;
+        private string targetDirectory;
 
-        public LongListingFormatter(bool listingHidden)
+        public LongListingFormatter(ListingItemControllerBase listingItemController, string targetDirectory)
         {
-            this.listingHidden = listingHidden;
+            this.listingItemController = listingItemController;
+            this.targetDirectory = targetDirectory;
         }
 
         /// <summary>
@@ -38,13 +41,10 @@ namespace Ls.ListingFormatters
         /// </summary>
         /// <param name="directories">List of directories.</param>
         /// <param name="files">List of files.</param>
-        public void PrintListings(IEnumerable<string> directories, IEnumerable<string> files)
+        public void PrintListings()
         {
-            if (!listingHidden)
-            {
-                directories = directories.Where(x => !x.StartsWith("."));
-                files = files.Where(x => !x.StartsWith("."));
-            }
+            IEnumerable<string> directories = listingItemController.GetDirectories();
+            IEnumerable<string> files = listingItemController.GetFiles();
 
             string formattedListing = GenerateListing(directories);
             ConsoleColor originalForegroundColor = Console.ForegroundColor;
