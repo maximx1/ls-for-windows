@@ -18,7 +18,7 @@ namespace Ls
         public static void Main(string[] args)
         {
             List<string> targetDirectories = new List<string>();
-            targetDirectories.Add(Directory.GetCurrentDirectory());
+            targetDirectories.Add(".");
 
             List<string> argsList = args.ToList<string>();
 
